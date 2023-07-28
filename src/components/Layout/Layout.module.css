@@ -1,0 +1,27 @@
+.header {
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+}
+.nav {
+  background-color: #5736a3;
+  opacity: 0.9;
+  border: 1px solid rgba(0, 0, 0, 0.716);
+  border-bottom-left-radius: 25px;
+  border-top-right-radius: 20px;
+  display: flex;
+  margin: 0 auto;
+  padding: 20px 30px;
+  width: 900px;
+}
+.list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+.item {
+  margin-right: 50px;
+  display: flex;
+}
