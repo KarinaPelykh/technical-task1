@@ -1,4 +1,5 @@
 .wrap {
+  position: relative;
   width: 380px;
   height: 460px;
   background: linear-gradient(
@@ -8,4 +9,35 @@
     #4b2a99 78.99%
   );
   margin: 20px;
+  border-radius: 10px;
+  padding: 20px;
+}
+.images {
+  border-radius: 60%;
+}
+.button {
+  background-color: #ebd8ff;
+  width: 169px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #373737;
+  font-size: 18px;
+}
+.line {
+  /* width: 380px;
+  height: 10px;
+  content: "";
+  background-color: #ebd8ff;
+  position: absolute;
+  top: 239px;
+  left: 0;
+  margin: 0; */
+}
+
+svg {
+  position: absolute;
+  top: 20px;
+  left: 20px;
 }
