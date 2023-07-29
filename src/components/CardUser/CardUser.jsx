@@ -1,60 +1,62 @@
-import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { featchUsers } from "../../redux/operation";
+import PropTypes from "prop-types";
 import picture from "../../images/picture.png";
 import icon from "../../images/sprite.svg";
-import { selectUser } from "../../redux/selector";
 import css from "./CardUser.module.css";
+import { useDispatch } from "react-redux";
+import { featchUsers, featchUsersADD } from "../../redux/operation";
 
-export const CardUser = () => {
-  const [setfollower] = useState();
+export const CardUser = ({ dataUser }) => {
+  const { avatar, tweets, followers, id, isFollowed } = dataUser;
   const dispatch = useDispatch();
-  const users = useSelector(selectUser);
-  useEffect(() => {
-    dispatch(featchUsers());
-  }, [dispatch]);
-
-  const handelClick = () => {
-    setfollower((prev) => !prev);
+  const handelClick = (id) => {
+    dispatch(
+      featchUsersADD({
+        id,
+        followers: isFollowed ? followers - 1 : followers + 1,
+        isFollowed: !isFollowed,
+      })
+    ).then(() => {
+      dispatch(featchUsers());
+    });
   };
+
   return (
-    <ul
-      style={{
-        display: "flex",
-        flexWrap: "wrap",
-        marginTop: "56px",
-      }}
-    >
-      {users.map((user) => (
-        <li key={user.id} className={css.wrap}>
-          <div>
-            <svg className={css.Svg} style={{ width: "76px", height: "22px" }}>
-              <use xlinkHref={icon + "#Logo"}></use>
-            </svg>
-            <img src={picture} />
-          </div>
-          <div className={css.line}>
-            <img className={css.images} src={user.avatar} alt="Avatar" />
-            <div
-              style={{
-                position: "relative",
-                top: "-57px",
-              }}
-            >
-              <p>{user.tweets} TWEETS</p>
-              <p>{user.followers} FOLLOWERS</p>
-              <button
-                onClick={() => handelClick(user.id)}
-                className={css.button}
-                type="button"
-              >
-                FOLLOW
-                {/* {follower ? "FOLLOWING" : "FOLLOW"} */}
-              </button>
-            </div>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <li className={css.wrap}>
+      <div>
+        <svg className={css.Svg} style={{ width: "76px", height: "22px" }}>
+          <use xlinkHref={icon + "#Logo"}></use>
+        </svg>
+        <img src={picture} />
+      </div>
+      <div className={css.line}>
+        <img className={css.images} src={avatar} alt="Avatar" />
+        <div
+          style={{
+            position: "relative",
+            top: "-57px",
+          }}
+        >
+          <p> {tweets} TWEETS</p>
+          <p>{followers.toLocaleString("en")} FOLLOWERS </p>
+          <button
+            onClick={() => handelClick(id)}
+            style={{ backgroundColor: isFollowed ? "#5CD3A8" : "#EBD8FF" }}
+            className={css.button}
+            type="button"
+          >
+            {isFollowed ? "FOLLOWING" : "FOLLOW"}
+          </button>
+        </div>
+      </div>
+    </li>
   );
+};
+CardUser.propTypes = {
+  dataUser: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    tweets: PropTypes.number.isRequired,
+    followers: PropTypes.number.isRequired,
+    isFollowed: PropTypes.bool,
+  }).isRequired,
 };

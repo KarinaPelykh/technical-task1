@@ -6,7 +6,21 @@ export const featchUsers = createAsyncThunk(
   "user",
   async (_, { rejectWithValue }) => {
     try {
-      const { data } = await axios.get("/users");
+      const { data } = await axios.get(`/users`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.log(error);
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const featchUsersADD = createAsyncThunk(
+  "user/add",
+  async (users, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.put(`/users/${users.id}`, users);
       console.log(data);
       return data;
     } catch (error) {

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { featchUsers } from "./operation";
+import { featchUsers, featchUsersADD } from "./operation";
 export const userSlice = createSlice({
   name: "users",
   initialState: {
@@ -19,6 +19,17 @@ export const userSlice = createSlice({
         state.error = "";
       })
       .addCase(featchUsers.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(featchUsersADD.fulfilled, (state) => {
+        state.isLoading = false;
+      })
+      .addCase(featchUsersADD.pending, (state) => {
+        state.isLoading = true;
+        state.error = "";
+      })
+      .addCase(featchUsersADD.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
