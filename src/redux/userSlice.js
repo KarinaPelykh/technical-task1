@@ -22,7 +22,15 @@ export const userSlice = createSlice({
         state.isLoading = false;
         state.error = action.payload;
       })
-      .addCase(featchUsersADD.fulfilled, (state) => {
+      .addCase(featchUsersADD.fulfilled, (state, action) => {
+        const { id, followers, isFollowed } = action.payload;
+        const addUser = state.users.findIndex((user) => user.id === id);
+        if (addUser !== -1) {
+          state.users[addUser].followers = followers;
+          state.users[addUser].isFollowed = isFollowed;
+        } else {
+          state.users.push(action.payload);
+        }
         state.isLoading = false;
       })
       .addCase(featchUsersADD.pending, (state) => {

@@ -24,6 +24,12 @@ a:hover {
 }
 
 body {
+  background: linear-gradient(
+    to right top,
+    rgb(76, 29, 149),
+    rgb(244, 63, 94),
+    rgb(76, 29, 149)
+  );
   margin: 0;
   display: flex;
   place-items: center;

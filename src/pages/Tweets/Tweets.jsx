@@ -1,33 +1,32 @@
-import { useEffect, useState } from "react";
 import { Button } from "../../components/Button/Button";
 import { featchUsers } from "../../redux/operation";
 import { ListUser } from "../../components/ListUser/ListUser";
-
+import { Link } from "react-router-dom";
+import css from "./Tweets.module.css";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { Loader } from "../../components/Loader/Loader";
 export const Tweets = () => {
-  const [page, setPage] = useState(1);
-  const [setUsers] = useState([]);
-  const [ShowButton, setShowButton] = useState(false);
+  const [users, setUsers] = useState([]);
+  console.log(users);
+  const [limit, setLimit] = useState(3);
+  const dicpatch = useDispatch();
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await featchUsers(page);
-        const { data } = response;
-        setUsers((prevUsers) => [...prevUsers, ...data]);
-        setShowButton(data.length === 3);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, [page]);
+    setUsers([]);
+    dicpatch(featchUsers(limit));
+  }, [dicpatch, limit]);
 
   const onClickButton = () => {
-    setPage((prevPage) => prevPage + 1);
+    setLimit((setLimit) => setLimit + 3);
   };
 
   return (
     <>
-      <ListUser />;{ShowButton && <Button onClick={onClickButton} />}
+      <Link className={css.link} to="/">
+        Go back
+      </Link>
+      <Loader />
+      <ListUser /> <Button onClick={onClickButton} />
     </>
   );
 };

@@ -3,11 +3,13 @@ import picture from "../../images/picture.png";
 import icon from "../../images/sprite.svg";
 import css from "./CardUser.module.css";
 import { useDispatch } from "react-redux";
-import { featchUsers, featchUsersADD } from "../../redux/operation";
+import { featchUsersADD } from "../../redux/operation";
+// import { selectUser } from "../../redux/selector";
 
 export const CardUser = ({ dataUser }) => {
   const { avatar, tweets, followers, id, isFollowed } = dataUser;
   const dispatch = useDispatch();
+  // const users = useSelector(selectUser);
   const handelClick = (id) => {
     dispatch(
       featchUsersADD({
@@ -15,9 +17,7 @@ export const CardUser = ({ dataUser }) => {
         followers: isFollowed ? followers - 1 : followers + 1,
         isFollowed: !isFollowed,
       })
-    ).then(() => {
-      dispatch(featchUsers());
-    });
+    );
   };
 
   return (
