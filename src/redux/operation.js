@@ -5,7 +5,6 @@ axios.defaults.baseURL = "https://64c36d93eb7fd5d6ebd0dc4e.mockapi.io";
 export const featchUsers = createAsyncThunk(
   "user",
   async (limit, { rejectWithValue }) => {
-    console.log(limit);
     try {
       const { data } = await axios.get(`/users?limit=${limit}&page=1`);
       console.log(data);

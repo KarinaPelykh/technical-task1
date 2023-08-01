@@ -2,7 +2,11 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  background: linear-gradient(
+    /* to right top, */ rgb(76, 29, 149),
+    rgb(244, 63, 94),
+    rgb(76, 29, 149)
+  );
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #ffffff;
@@ -24,12 +28,6 @@ a:hover {
 }
 
 body {
-  background: linear-gradient(
-    to right top,
-    rgb(76, 29, 149),
-    rgb(244, 63, 94),
-    rgb(76, 29, 149)
-  );
   margin: 0;
   display: flex;
   place-items: center;

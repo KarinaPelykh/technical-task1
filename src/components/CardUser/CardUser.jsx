@@ -36,7 +36,7 @@ export const CardUser = ({ dataUser }) => {
             top: "-57px",
           }}
         >
-          <p> {tweets} TWEETS</p>
+          <p> {tweets.toLocaleString("en")} TWEETS</p>
           <p>{followers.toLocaleString("en")} FOLLOWERS </p>
           <button
             onClick={() => handelClick(id)}

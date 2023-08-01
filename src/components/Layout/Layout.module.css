@@ -2,7 +2,7 @@
   left: 0;
   position: fixed;
   top: 0;
-  width: 100%;
+  min-width: 100%;
   z-index: 999;
 }
 .nav {
@@ -14,7 +14,6 @@
   display: flex;
   margin: 0 auto;
   padding: 20px 30px;
-  width: 900px;
 }
 .list {
   display: flex;

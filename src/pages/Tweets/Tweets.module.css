@@ -1,7 +1,7 @@
 .link {
   color: white;
   margin: 0;
-  margin-top: 62px;
+  margin-top: 84px;
   margin-right: 1120px;
   position: absolute;
   top: 0;
@@ -10,4 +10,5 @@
   background-color: blueviolet;
   padding: 10px;
   border-radius: 5px;
+  width: 75px;
 }

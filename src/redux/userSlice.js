@@ -6,6 +6,7 @@ export const userSlice = createSlice({
     users: [],
     isLoading: false,
     error: null,
+    shovButton: false,
   },
 
   extraReducers: (builder) => {
@@ -13,6 +14,7 @@ export const userSlice = createSlice({
       .addCase(featchUsers.fulfilled, (state, action) => {
         state.users = action.payload;
         state.isLoading = false;
+        state.shovButton = true;
       })
       .addCase(featchUsers.pending, (state) => {
         state.isLoading = true;
