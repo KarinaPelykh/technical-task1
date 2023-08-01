@@ -25,7 +25,7 @@ export const Tweets = () => {
   };
 
   useEffect(() => {
-    if (user.length === 8) {
+    if (user.length === 23) {
       setShowButton(false);
     } else {
       setShowButton(true);
