@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   min-width: 100%;
-  z-index: 999;
+  z-index: 8;
 }
 .nav {
   background-color: #5736a3;

@@ -7,10 +7,8 @@ export const featchUsers = createAsyncThunk(
   async (limit, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(`/users?limit=${limit}&page=1`);
-      console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message);
     }
   }
@@ -21,10 +19,8 @@ export const featchUsersADD = createAsyncThunk(
   async (users, { rejectWithValue }) => {
     try {
       const { data } = await axios.put(`/users/${users.id}`, users);
-      console.log(data);
       return data;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message);
     }
   }

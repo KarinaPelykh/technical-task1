@@ -1,4 +1,10 @@
-.loader {
-  background-color: rgb(244, 63, 94);
-  color: blueviolet;
+.loaderContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  top: -61px;
+  left: 19px;
+  z-index: 1000;
 }

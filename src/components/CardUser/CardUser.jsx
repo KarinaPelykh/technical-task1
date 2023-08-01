@@ -4,12 +4,10 @@ import icon from "../../images/sprite.svg";
 import css from "./CardUser.module.css";
 import { useDispatch } from "react-redux";
 import { featchUsersADD } from "../../redux/operation";
-// import { selectUser } from "../../redux/selector";
 
 export const CardUser = ({ dataUser }) => {
   const { avatar, tweets, followers, id, isFollowed } = dataUser;
   const dispatch = useDispatch();
-  // const users = useSelector(selectUser);
   const handelClick = (id) => {
     dispatch(
       featchUsersADD({
@@ -23,7 +21,7 @@ export const CardUser = ({ dataUser }) => {
   return (
     <li className={css.wrap}>
       <div>
-        <svg className={css.Svg} style={{ width: "76px", height: "22px" }}>
+        <svg className={css.Svgw} style={{ width: "76px", height: "22px" }}>
           <use xlinkHref={icon + "#Logo"}></use>
         </svg>
         <img src={picture} />

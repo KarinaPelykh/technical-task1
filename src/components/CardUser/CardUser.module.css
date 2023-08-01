@@ -13,6 +13,13 @@
   padding: 20px 0;
   list-style: none;
 }
+@media screen and (max-width: 320px) {
+  .wrap {
+    margin-top: 84px;
+    margin-bottom: 19px;
+  }
+}
+
 .images {
   border: 10px solid #ebd8ff;
   box-shadow: rgba(0, 0, 0, 0.06) 0px 3.43693px 3.43693px,
@@ -47,7 +54,7 @@
     rgb(251, 248, 255) 0px 3.43693px 2.5777px inset;
 }
 
-svg {
+.Svgw {
   position: absolute;
   top: 20px;
   left: 20px;

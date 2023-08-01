@@ -6,7 +6,7 @@ export const Home = () => {
       <Link className={css.button} to="/tweet">
         Go
       </Link>
-      <h1 style={{ marginTop: "200px" }}>Hello my friend!</h1>
+      <h1 className={css.text}>Hello my friend!</h1>
     </>
   );
 };
